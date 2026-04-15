@@ -10,7 +10,7 @@
 <body>
 
 <header>
-  <div class="logo">Nida-Bscs</div>
+  <div class="logo">Nida_Bscs</div>
 
   <div class="menu" onclick="toggleMenu()">☰</div>
 
@@ -92,16 +92,16 @@
 <section id="contact" class="reveal">
   <h2>Contact</h2>
 
-  <form onsubmit="sendMessage(event)">
-    <input type="text" placeholder="Name" required />
-    <input type="email" placeholder="Email" required />
-    <textarea placeholder="Message"></textarea>
-    <button>Send</button>
-  </form>
+ <form action="https://formspree.io/f/xdaykqng" method="POST">
+  <input type="text" name="name" placeholder="Your Name" required />
+  <input type="email" name="email" placeholder="Your Email" required />
+  <textarea name="message" placeholder="Your Message"></textarea>
+  <button type="submit">Send</button>
+</form>
 </section>
 
 <footer>
-  <p>© 2026 Nidz Portfolio</p>
+  <p>© 2026 Nida_Bscs Portfolio</p>
 </footer>
 
 <script src="script.js"></script>
