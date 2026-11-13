@@ -1,33 +1,32 @@
-function scrollToSection(id) {
-  document.getElementById(id).scrollIntoView({
-    behavior: "smooth"
-  });
+const root = document.documentElement;
+const nav = document.getElementById("nav");
+const menuBtn = document.getElementById("menuBtn");
+const modeBtn = document.getElementById("modeBtn");
+
+/* Theme: saved choice first, otherwise the visitor's system setting */
+function applyTheme(theme) {
+  root.setAttribute("data-theme", theme);
+  modeBtn.textContent = theme === "dark" ? "Light" : "Dark";
 }
+
+let saved = null;
+try { saved = localStorage.getItem("theme"); } catch (e) {}
+applyTheme(saved || (matchMedia("(prefers-color-scheme: dark)").matches ? "dark" : "light"));
+
+modeBtn.addEventListener("click", () => {
+  const next = root.getAttribute("data-theme") === "dark" ? "light" : "dark";
+  applyTheme(next);
+  try { localStorage.setItem("theme", next); } catch (e) {}
+});
 
 /* Mobile menu */
-function toggleMenu() {
-  document.getElementById("nav").classList.toggle("active");
-}
-
-/* Dark / Light mode */
-function toggleMode() {
-  document.body.classList.toggle("light");
-}
-
-/* Contact */
-function sendMessage(e) {
-  e.preventDefault();
-  alert("Message sent successfully!");
-}
-
-/* Scroll reveal animation */
-window.addEventListener("scroll", () => {
-  let reveals = document.querySelectorAll(".reveal");
-
-  reveals.forEach(el => {
-    let top = el.getBoundingClientRect().top;
-    if (top < window.innerHeight - 100) {
-      el.classList.add("active");
-    }
-  });
+menuBtn.addEventListener("click", () => {
+  const open = nav.classList.toggle("open");
+  menuBtn.setAttribute("aria-expanded", open);
 });
+nav.querySelectorAll("a").forEach(a =>
+  a.addEventListener("click", () => {
+    nav.classList.remove("open");
+    menuBtn.setAttribute("aria-expanded", "false");
+  })
+);

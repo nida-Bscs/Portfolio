@@ -2,108 +2,115 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Nida Omair Portfolio</title>
-
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Nida Omair | Data Analyst &amp; BI Developer</title>
+  <meta name="description" content="Portfolio of Nida Omair: Dashboards, ETL pipelines and reconciliation work." />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,500;12..96,700&family=IBM+Plex+Sans:wght@400;500&display=swap" rel="stylesheet" />
   <link rel="stylesheet" href="style.css" />
 </head>
 <body>
 
-<header>
-  <div class="logo">Nida_Bscs</div>
-
-  <div class="menu" onclick="toggleMenu()">☰</div>
-
+<header class="top">
+  <a class="logo" href="#home">Nida Omair</a>
+  <button class="menu" id="menuBtn" aria-label="Open menu" aria-expanded="false">Menu</button>
   <nav id="nav">
-    <a href="#home">Home</a>
     <a href="#projects">Projects</a>
     <a href="#skills">Skills</a>
     <a href="#contact">Contact</a>
-
-    <button class="mode" onclick="toggleMode()">🌙</button>
+    <button class="mode" id="modeBtn" aria-label="Switch light or dark mode">Dark</button>
   </nav>
 </header>
 
-<!-- HERO -->
+<main>
 <section class="hero" id="home">
-  <div class="glass">
-    <h1>Frontend Developer</h1>
-    <p>Building modern web apps & learning Data Analytics</p>
+  <div class="hero-text">
+    <p class="role">Data analyst and BI developer, Karachi</p>
+    <h1>I turn messy billing and sales data into numbers people can trust.</h1>
+    <p class="lead">I build dashboards, ETL pipelines and reconciliation workflows with Power BI, Python and Excel.</p>
+    <div class="actions">
+      <a class="btn primary" href="#projects">View projects</a>
+      <a class="btn" href="cv.pdf" download>Download CV</a>
+    </div>
+  </div>
 
-    <div class="buttons">
-      <button onclick="scrollToSection('projects')">View Work</button>
-      <a href="cv.pdf" class="resume" download>Download CV</a>
+  <div class="board" aria-hidden="true">
+    <div class="board-head"><span>Sales overview</span><span class="pill">Sample view</span></div>
+    <div class="bars">
+      <i style="--h:46%"></i><i style="--h:62%"></i><i style="--h:54%"></i>
+      <i style="--h:78%"></i><i style="--h:70%"></i><i style="--h:92%"></i>
+    </div>
+    <div class="board-foot">
+      <div><b>Extract</b><small>raw files</small></div>
+      <div><b>Transform</b><small>clean + join</small></div>
+      <div><b>Load</b><small>report-ready</small></div>
     </div>
   </div>
 </section>
 
-<!-- PROJECTS -->
-<section id="projects" class="reveal">
+<section id="projects">
   <h2>Projects</h2>
 
-  <div class="grid">
+  <article class="project feature">
+    <div class="p-body">
+      <h3>Food delivery ETL pipeline</h3>
+      <p>A Python pipeline that reads raw food delivery orders, fixes file encoding, cleans and standardises the data, then loads it into Snowflake for analysis.</p>
+      <ul class="tags"><li>Python</li><li>pandas</li><li>Snowflake</li><li>ETL</li></ul>
+      <!-- TODO: replace # with your GitHub repo link (upload food_delivery_etl.py, not the original with the password) -->
+      <a class="btn primary" href="https://github.com/nida-Bscs/food-delivery-etl" target="_blank" rel="noopener">View on GitHub</a>
+    </div>
+    <ol class="flow">
+      <li><b>Extract</b>Detect file encoding and re-save the CSV as UTF-8</li>
+      <li><b>Transform</b>Check nulls and duplicates, standardise dates and text types</li>
+      <li><b>Load</b>Save a clean CSV and load a Snowflake table, adding new columns automatically</li>
+    </ol>
+  </article>
 
-    <!-- REAL PROJECT -->
-    <div class="card">
+  <article class="project feature">
+    <div class="p-body">
+      <h3>Sales dashboard</h3>
+      <p>A Tableau dashboard covering 2016 to 2019: $2.30M revenue, 5,009 orders and a 12.47% profit margin, broken down by category, region, state and year.</p>
+      <ul class="tags"><li>Tableau</li><li>Data visualisation</li></ul>
+      <!-- TODO: if you publish to Tableau Public, point this link there -->
+      <a class="btn primary" href="sales.png" target="_blank" rel="noopener">View full size</a>
+    </div>
+    <a class="shot" href="sales.png" target="_blank" rel="noopener"><img src="sales.png" alt="Tableau dashboard titled Sales Performance Analysis 2016 to 2019, with revenue, profit, sales by category, region and state" loading="lazy" /></a>
+  </article>
+
+  <article class="project">
+    <div class="p-body">
       <h3>Campus Connect</h3>
-      <p>Student collaboration platform built using HTML, CSS & JavaScript.</p>
-
-      <a href="https://nida-bscs.github.io/campus-connect/" target="_blank" class="project-btn">
-        🔗 View Project
-      </a>
+      <p>A student collaboration platform built with HTML, CSS and JavaScript.</p>
+      <ul class="tags"><li>HTML</li><li>CSS</li><li>JavaScript</li></ul>
+      <a class="btn" href="https://nida-bscs.github.io/campus-connect/" target="_blank" rel="noopener">View project</a>
     </div>
-
-    <!-- REAL PROJECT -->
-    <div class="card">
-      <h3>Sales Dashboard</h3>
-      <p>Data analysis dashboard for business insights.</p>
-
-      <a href="#" class="project-btn">
-        🔗 Coming Soon
-      </a>
-    </div>
-
-    <!-- UPCOMING PROJECT -->
-    <div class="card coming-soon">
-      <h3>AI Portfolio Assistant</h3>
-      <p>AI-based smart portfolio project (under development).</p>
-
-      <span class="badge">Coming Soon</span>
-    </div>
-
-  </div>
+  </article>
 </section>
 
-<!-- SKILLS -->
-<section id="skills" class="reveal">
+<section id="skills">
   <h2>Skills</h2>
-
-  <div class="skills">
-    <span>HTML</span>
-    <span>CSS</span>
-    <span>JavaScript</span>
-    <span>Python</span>
-    <span>MsExcel</span>
-   <span>PowereBi</span>
-    <span>Git</span>
+  <div class="skill-groups">
+    <div><h3>Analysis and BI</h3><ul class="tags"><li>Tableau</li><li>Power BI</li><li>DAX</li><li>Power Query</li><li>MS Excel</li></ul></div>
+    <div><h3>Data engineering</h3><ul class="tags"><li>Python</li><li>pandas</li><li>Snowflake</li><li>ETL</li></ul></div>
+    <div><h3>Web</h3><ul class="tags"><li>HTML</li><li>CSS</li><li>JavaScript</li><li>Git</li></ul></div>
   </div>
 </section>
 
-<!-- CONTACT -->
-<section id="contact" class="reveal">
+<section id="contact">
   <h2>Contact</h2>
-
- <form action="https://formspree.io/f/xdaykqng" method="POST">
-  <input type="text" name="name" placeholder="Your Name" required />
-  <input type="email" name="email" placeholder="Your Email" required />
-  <textarea name="message" placeholder="Your Message"></textarea>
-  <button type="submit">Send</button>
-</form>
+  <p class="lead">Have a data project or a role in mind? Send me a message.</p>
+  <form action="https://formspree.io/f/xdaykqng" method="POST">
+    <label>Name<input type="text" name="name" required /></label>
+    <label>Email<input type="email" name="email" required /></label>
+    <label>Message<textarea name="message" rows="5" required></textarea></label>
+    <button class="btn primary" type="submit">Send message</button>
+  </form>
+  <p class="links"><a href="https://linkedin.com/in/nida07090-omair" target="_blank" rel="noopener">LinkedIn</a></p>
 </section>
+</main>
 
-<footer>
-  <p>© 2026 Nida_Bscs Portfolio</p>
-</footer>
+<footer><p>© 2026 Nida Omair</p></footer>
 
 <script src="script.js"></script>
 </body>
